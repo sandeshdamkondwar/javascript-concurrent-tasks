@@ -4,21 +4,39 @@ Javascript class that allows to register multiple callbacks to execute simulteni
 
 Example:
 ```js
-function task1 (argument) {
-	// body...
-}
+syncFuncs.registerTask(function() {
+    setTimeout(function () {
+        console.log("Task 1 completed");
+        syncFuncs.markOneDone("Task 1 output");
+    }, 400);
+});
 
-function task2 (argument) {
-	// body...
-}
+syncFuncs.registerTask(function() {
+    setTimeout(function () {
+        console.log("Task 2 completed");
+        syncFuncs.markOneDone("Task 2 output");
+    }, 300);
+});
 
-function done (argument) {
-	// body...
-}
+syncFuncs.registerTask(function() {
+    setTimeout(function () {
+        console.log("Task 3 completed");
+        syncFuncs.markOneDone("Task 3 output");
+    }, 200);
+});
 
-var functions = [];
-functions.push(task1);
-functions.push(task2);
+syncFuncs.registerTask(function() {
+    setTimeout(function () {
+        console.log("Task 4 completed");
+        syncFuncs.markOneDone("Task 4 output");
+    }, 100);
+});
 
-var syncFuns = new ParellelTasks(functions, done);
+syncFuncs.timout = 3000;
+
+syncFuncs.registerFinalTask(function(outputs) {
+    console.log(outputs);
+});
+
+syncFuncs.start();
 ```
