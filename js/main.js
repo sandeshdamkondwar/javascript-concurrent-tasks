@@ -2,31 +2,43 @@ require(['jQuery', 'underscore', 'concurrent-tasks'], function($, _, SyncFuncs) 
     var syncFuncs = new SyncFuncs();
 
     syncFuncs.registerTask(function() {
-        setTimeout(function () {
-            console.log("Task 1 completed");
-            syncFuncs.markOneDone("Task 1 output");
-        }, 400);
+        $.ajax({
+            url: 'data/a.json',
+        })
+        .always(function(data) {
+            console.log("Task 1 done");
+            syncFuncs.markOneDone(data);
+        });
     });
 
     syncFuncs.registerTask(function() {
-        setTimeout(function () {
-            console.log("Task 2 completed");
-            syncFuncs.markOneDone("Task 2 output");
-        }, 300);
+        $.ajax({
+            url: 'data/b.json',
+        })
+        .always(function(data) {
+            console.log("Task 2 done");
+            syncFuncs.markOneDone(data);
+        });
     });
 
     syncFuncs.registerTask(function() {
-        setTimeout(function () {
-            console.log("Task 3 completed");
-            syncFuncs.markOneDone("Task 3 output");
-        }, 200);
+        $.ajax({
+            url: 'data/c.json',
+        })
+        .always(function(data) {
+            console.log("Task 3 done");
+            syncFuncs.markOneDone(data);
+        });
     });
 
     syncFuncs.registerTask(function() {
-        setTimeout(function () {
-            console.log("Task 4 completed");
-            syncFuncs.markOneDone("Task 4 output");
-        }, 100);
+        $.ajax({
+            url: 'data/d.json',
+        })
+        .always(function(data) {
+            console.log("Task 4 done");
+            syncFuncs.markOneDone(data);
+        });
     });
 
     syncFuncs.timout = 3000;
