@@ -3,41 +3,49 @@ require(['jQuery', 'underscore', 'concurrent-tasks'], function($, _, SyncFuncs) 
 
     syncFuncs.registerTask(function() {
         $.ajax({
-            url: 'data/a.json',
+            url: 'http://www.coupondunia.in',
         })
-        .always(function(data) {
+        .always(function() {
             console.log("Task 1 done");
-            syncFuncs.markOneDone(data);
+            syncFuncs.markOneDone({
+                id: 1
+            });
         });
     });
 
     syncFuncs.registerTask(function() {
         $.ajax({
-            url: 'data/b.json',
+            url: 'http://www.coupondunia.in',
         })
-        .always(function(data) {
+        .always(function() {
             console.log("Task 2 done");
-            syncFuncs.markOneDone(data);
+            syncFuncs.markOneDone({
+                id: 2
+            });
         });
     });
 
     syncFuncs.registerTask(function() {
         $.ajax({
-            url: 'data/c.json',
+            url: 'http://www.coupondunia.in',
         })
-        .always(function(data) {
+        .always(function() {
             console.log("Task 3 done");
-            syncFuncs.markOneDone(data);
+            syncFuncs.markOneDone({
+                id: 3
+            });
         });
     });
 
     syncFuncs.registerTask(function() {
         $.ajax({
-            url: 'data/d.json',
+            url: 'http://www.coupondunia.in',
         })
-        .always(function(data) {
+        .always(function() {
             console.log("Task 4 done");
-            syncFuncs.markOneDone(data);
+            syncFuncs.markOneDone({
+                id: 4
+            });
         });
     });
 

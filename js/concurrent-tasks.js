@@ -18,6 +18,7 @@ define([], function () {
         this.allDone = callback;
     };
 
+    // Starts all the registered functions
     SyncFuncs.prototype.start = function() {
         for (var i = 0;  i < this.functions.length; i++) {
             this.functions[i](this);
@@ -27,8 +28,8 @@ define([], function () {
 
         setTimeout(function () {
             if(this.isAllDone === false) {
-                console.log('Timed Out .....');
                 this.isAllDone = true;
+                console.warn('Timed out, "outputs" does not have all information needed.');
                 this.allDone(this.outputs);
             }
         }, this.timeout);
