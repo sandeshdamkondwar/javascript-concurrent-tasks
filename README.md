@@ -4,32 +4,42 @@ Javascript class that allows to register multiple callbacks to execute simulteni
 
 Example:
 ```js
+var syncFuncs = new SyncFuncs();
+
 syncFuncs.registerTask(function() {
-    setTimeout(function () {
-        console.log("Task 1 completed");
-        syncFuncs.markOneDone("Task 1 output");
-    }, 400);
+    $.ajax({
+        url: 'http://www.coupondunia.in',
+    })
+    .always(function() {
+        console.log("Task 1 done");
+        syncFuncs.markOneDone({
+            id: 1
+        });
+    });
 });
 
 syncFuncs.registerTask(function() {
-    setTimeout(function () {
-        console.log("Task 2 completed");
-        syncFuncs.markOneDone("Task 2 output");
-    }, 300);
+    $.ajax({
+        url: 'http://www.coupondunia.in',
+    })
+    .always(function() {
+        console.log("Task 2 done");
+        syncFuncs.markOneDone({
+            id: 2
+        });
+    });
 });
 
 syncFuncs.registerTask(function() {
-    setTimeout(function () {
-        console.log("Task 3 completed");
-        syncFuncs.markOneDone("Task 3 output");
-    }, 200);
-});
-
-syncFuncs.registerTask(function() {
-    setTimeout(function () {
-        console.log("Task 4 completed");
-        syncFuncs.markOneDone("Task 4 output");
-    }, 100);
+    $.ajax({
+        url: 'http://www.coupondunia.in',
+    })
+    .always(function() {
+        console.log("Task 3 done");
+        syncFuncs.markOneDone({
+            id: 3
+        });
+    });
 });
 
 syncFuncs.timout = 3000;
